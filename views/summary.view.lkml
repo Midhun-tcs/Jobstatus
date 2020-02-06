@@ -20,9 +20,15 @@ view: summary {
     sql: ${TABLE}.End_Time ;;
   }
 
+  dimension: failed_in_last_7_day {
+    type: string
+    hidden: yes
+    sql: ${TABLE}.Failed_in_Last_7_days ;;
+  }
+
   dimension: failed_in_last_7_days {
     type: string
-    sql: ${TABLE}.Failed_in_Last_7_days ;;
+    sql: case when datediff(day,getdate(),${detail.failed_on})<7 then 'Yes' else 'No' end ;;
   }
 
   dimension: file_name {
@@ -138,9 +144,18 @@ view: summary {
     sql: ${TABLE}.Type ;;
   }
 
+  dimension: unusal_activty {
+    type: string
+    hidden: yes
+    sql: ${TABLE}.Unusal_activity ;;
+  }
+
   dimension: unusal_activity {
     type: string
-    sql: ${TABLE}.Unusal_activity ;;
+    sql: case when ${rows_processed}>${static.rows_processed_threshold} then 'Y'
+    when ${start_time}>${static.usual_start_time} then 'Y'
+    when ${run_time}>${static.usual_run_time} then 'Y'
+    else 'N' end;;
   }
 
   measure: count {

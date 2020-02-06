@@ -27,4 +27,9 @@ explore: summary {
     relationship: many_to_one
     sql_on: ${static.job_id}=${static.job_id} ;;
 }
+  join: detail {
+    type: left_outer
+    relationship: many_to_one
+    sql_on: ${summary.job_id}=${detail.job_id} ;;
+  }
 }
