@@ -15,6 +15,7 @@ view: detail {
     sql: ${TABLE}.End_Time ;;
   }
 
+<<<<<<< HEAD
   dimension_group: failed_at {
     type: time
     timeframes: [
@@ -40,6 +41,15 @@ view: detail {
       quarter,
       year
     ]
+=======
+  dimension: failed_at {
+    type: string
+    sql: ${TABLE}.Failed_at ;;
+  }
+
+  dimension: failed_on {
+    type: string
+>>>>>>> branch 'dev-midhun-prasenan-mt34' of git@github.com:Midhun-tcs/Job_status.git
     sql: ${TABLE}.Failed_on ;;
   }
 

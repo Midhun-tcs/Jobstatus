@@ -41,6 +41,7 @@ view: static {
     sql: ${TABLE}.Rows_Processed_Threshold ;;
   }
 
+<<<<<<< HEAD
   dimension_group: sla {
     type: time
     timeframes: [
@@ -85,6 +86,25 @@ view: static {
       quarter,
       year
     ]
+=======
+  dimension: sla_time {
+    type: string
+    sql: ${TABLE}.SLA_Time ;;
+  }
+
+  dimension: sub_application {
+    type: string
+    sql: ${TABLE}.Sub_Application ;;
+  }
+
+  dimension: usual_run_time {
+    type: string
+    sql: ${TABLE}.Usual_Run_time ;;
+  }
+
+  dimension: usual_start_time {
+    type: string
+>>>>>>> branch 'dev-midhun-prasenan-mt34' of git@github.com:Midhun-tcs/Job_status.git
     sql: ${TABLE}.Usual_Start_Time ;;
   }
 
